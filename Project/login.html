@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FreeDo Fitness - Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+
+            /* Background with overlay */
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1605296867304-46d5465a13f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80') 
+                        no-repeat center center/cover;
+        }
+
+        .login-container{
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0px 0px 20px rgba(0,0,0,0.8);
+            text-align: center;
+            width: 350px;
+            backdrop-filter: blur(10px);
+        }
+
+        h2{
+            margin-bottom: 20px;
+            color: #00e6e6;
+            text-shadow: 2px 2px 10px black;
+        }
+
+        input{
+            width: 90%;
+            padding: 12px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        input:focus{
+            outline: none;
+            box-shadow: 0px 0px 10px #00e6e6;
+        }
+
+        button{
+            width: 95%;
+            padding: 12px;
+            background: linear-gradient(90deg, #ff4d6d, #ffcc00);
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: 0.3s;
+            box-shadow: 0px 0px 15px rgba(255, 200, 0, 0.8);
+        }
+
+        button:hover{
+            transform: scale(1.05);
+            box-shadow: 0px 0px 20px rgba(255, 100, 100, 1);
+        }
+
+        p{
+            margin-top: 15px;
+            color: white;
+            font-size: 14px;
+        }
+
+        a{
+            color: #ffcc00;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover{
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>FreeDo Fitness Login</h2>
+        <form onsubmit="return loginUser()">
+            <input type="text" id="username" placeholder="Enter Username" required><br>
+            <input type="password" id="password" placeholder="Enter Password" required><br>
+            <button type="submit">Login</button>
+        </form>
+        <p>Don’t have an account? <a href="register.html">Register</a></p>
+    </div>
+
+    <script>
+        function loginUser(){
+            alert("Login successful! Redirecting to Dashboard...");
+            window.location.href = "dashboard.html";
+            return false; // prevent form from refreshing
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diet Plan - FreeDo Fitness</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: url('https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+      color: #fff;
+      min-height: 100vh;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.75);
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: auto;
+      padding: 40px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 32px;
+      color: #f1c40f;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+
+    label {
+      display: block;
+      margin: 12px 0 5px;
+      font-weight: bold;
+    }
+
+    input, select, button {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    button {
+      background: #e74c3c;
+      color: #fff;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #c0392b;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 12px;
+      margin-top: 20px;
+      backdrop-filter: blur(6px);
+    }
+
+    .card h2 {
+      color: #00e6e6;
+      margin-bottom: 10px;
+    }
+
+    .card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .card ul li {
+      margin: 6px 0;
+      padding: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+  <div class="container">
+    <h1>Personalized Diet Plan</h1>
+
+    <label for="weight">Enter Your Body Weight (kg)</label>
+    <input type="number" id="weight" placeholder="e.g. 70">
+
+    <label for="goal">Select Your Goal</label>
+    <select id="goal">
+      <option value="">-- Select --</option>
+      <option value="fatloss">Fat Loss</option>
+      <option value="weightgain">Weight Gain</option>
+      <option value="musclegain">Muscle Gain</option>
+    </select>
+
+    <button onclick="generateDiet()">Get Diet Plan</button>
+
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function generateDiet() {
+      const weight = parseInt(document.getElementById("weight").value);
+      const goal = document.getElementById("goal").value;
+      const result = document.getElementById("result");
+
+      if (!weight || !goal) {
+        alert("Please enter weight and select a goal.");
+        return;
+      }
+
+      let calories, protein, carbs, fats, fiber, planHTML = "";
+
+      if (goal === "fatloss") {
+        calories = weight * 22;
+        protein = weight * 2;
+        carbs = weight * 3;
+        fats = weight * 0.8;
+        fiber = 25;
+        planHTML = `
+          <div class="card">
+            <h2>Your Daily Nutrition Targets</h2>
+            <ul>
+              <li>Calories: ${calories} kcal</li>
+              <li>Protein: ${protein} g</li>
+              <li>Carbs: ${carbs} g</li>
+              <li>Fats: ${fats} g</li>
+              <li>Fiber: ${fiber} g</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h2>Sample Fat Loss Diet</h2>
+            <ul>
+              <li>🍳 Breakfast: 4 Egg Whites + 50g Oats + 1 Apple</li>
+              <li>🥪 Snack: 100g Greek Yogurt + 10 Almonds</li>
+              <li>🍚 Lunch: 150g Chicken + 100g Rice + Vegetables</li>
+              <li>🥤 Snack: Protein Shake (25g protein)</li>
+              <li>🥗 Dinner: 150g Fish + 100g Sweet Potato + Salad</li>
+            </ul>
+          </div>
+        `;
+      }
+
+      if (goal === "weightgain") {
+        calories = weight * 35;
+        protein = weight * 1.8;
+        carbs = weight * 5;
+        fats = weight * 1;
+        fiber = 30;
+        planHTML = `
+          <div class="card">
+            <h2>Your Daily Nutrition Targets</h2>
+            <ul>
+              <li>Calories: ${calories} kcal</li>
+              <li>Protein: ${protein} g</li>
+              <li>Carbs: ${carbs} g</li>
+              <li>Fats: ${fats} g</li>
+              <li>Fiber: ${fiber} g</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h2>Sample Weight Gain Diet</h2>
+            <ul>
+              <li>🍳 Breakfast: 3 Whole Eggs + 100g Oats + Banana</li>
+              <li>🥪 Snack: Peanut Butter Sandwich + Milk</li>
+              <li>🍚 Lunch: 200g Chicken + 150g Rice + Vegetables</li>
+              <li>🥤 Snack: Protein Shake + 20g Nuts</li>
+              <li>🥗 Dinner: 200g Paneer/Fish + 150g Sweet Potato + Salad</li>
+            </ul>
+          </div>
+        `;
+      }
+
+      if (goal === "musclegain") {
+        calories = weight * 30;
+        protein = weight * 2.2;
+        carbs = weight * 4;
+        fats = weight * 0.9;
+        fiber = 30;
+        planHTML = `
+          <div class="card">
+            <h2>Your Daily Nutrition Targets</h2>
+            <ul>
+              <li>Calories: ${calories} kcal</li>
+              <li>Protein: ${protein} g</li>
+              <li>Carbs: ${carbs} g</li>
+              <li>Fats: ${fats} g</li>
+              <li>Fiber: ${fiber} g</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h2>Sample Muscle Gain Diet</h2>
+            <ul>
+              <li>🍳 Breakfast: 6 Egg Whites + 2 Whole Eggs + 80g Oats + Milk</li>
+              <li>🥪 Snack: Protein Shake + 1 Banana</li>
+              <li>🍚 Lunch: 200g Chicken + 150g Rice + Vegetables</li>
+              <li>🥤 Snack: 150g Paneer + 2 Chapati</li>
+              <li>🥗 Dinner: 200g Fish/Chicken + 150g Sweet Potato + Salad</li>
+            </ul>
+          </div>
+        `;
+      }
+
+      result.innerHTML = planHTML;
+    }
+  </script>
+</body>
+</html>

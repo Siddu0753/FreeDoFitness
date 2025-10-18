@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>View Profile - FreeDo Fitness</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: url('https://images.unsplash.com/photo-1605296867304-46d5465a13f1?auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+      color: #fff;
+      min-height: 100vh;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.75);
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+      margin: auto;
+      padding: 40px;
+      text-align: center;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 32px;
+      color: #f1c40f;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 25px;
+      border-radius: 12px;
+      backdrop-filter: blur(6px);
+      margin-top: 20px;
+      text-align: left;
+    }
+
+    .card h2 {
+      color: #00e6e6;
+      margin-bottom: 15px;
+    }
+
+    .card p {
+      font-size: 16px;
+      margin: 8px 0;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 20px;
+      background: #e74c3c;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #c0392b;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+  <div class="container">
+    <h1>Your Profile</h1>
+    <div class="card" id="profile-card">
+      <h2>Personal Details</h2>
+      <p><strong>Name:</strong> <span id="name"></span></p>
+      <p><strong>Age:</strong> <span id="age"></span></p>
+      <p><strong>Gender:</strong> <span id="gender"></span></p>
+      <p><strong>Weight:</strong> <span id="weight"></span> kg</p>
+      <p><strong>Email:</strong> <span id="email"></span></p>
+      <p><strong>Goal:</strong> <span id="goal"></span></p>
+    </div>
+    <a href="dashboard.html" class="btn">Go to Dashboard</a>
+  </div>
+
+  <script>
+    // Example: getting user data from localStorage (set this in register.js after form submit)
+    const user = JSON.parse(localStorage.getItem("user")) || {
+      name: "John Doe",
+      age: 22,
+      gender: "Male",
+      weight: 70,
+      email: "john@example.com",
+      goal: "Muscle Gain"
+    };
+
+    document.getElementById("name").innerText = user.name;
+    document.getElementById("age").innerText = user.age;
+    document.getElementById("gender").innerText = user.gender;
+    document.getElementById("weight").innerText = user.weight;
+    document.getElementById("email").innerText = user.email;
+    document.getElementById("goal").innerText = user.goal;
+  </script>
+</body>
+</html>
